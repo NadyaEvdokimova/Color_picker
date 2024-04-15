@@ -1,0 +1,129 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='40' height='20' patternTransform='scale(4) rotate(45)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(221,12.1%,69.2%,1)'/><path d='M40 0L20-10V0l20 10zm0 10L20 0v10l20 10zm0 10L20 10v10l20 10zM0 20l20-10v10L0 30zm0-10L20 0v10L0 20zM0 0l20-10V0L0 10z'  stroke-width='1' stroke='hsla(219,12.5%,78%,1)' fill='none'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 3px;
+}
+
+.main_part {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.light_box {
+  background-color: #F0EFEB;
+  width: 80%; /* Adjusted for responsiveness */
+  max-width: 800px; /* Added max-width to limit size on larger screens */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 8px 5px #888888;
+}
+
+.title {
+  font-weight: 800;
+}
+
+.title > a {
+  text-decoration: none;
+  color: #0C1270;
+}
+
+.image_form form input[type="submit"] {
+  background-color: #0C1270;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.image_form form input[type="submit"]:hover {
+  background-color: #A7ADBA;
+}
+
+.image_show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+img {
+  max-width: 50%;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+}
+
+.palette {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 70%;
+}
+
+.color {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.color:hover .overlay {
+  opacity: 1;
+}
+
+.rgb_code {
+  position: absolute;
+  bottom: 0;
+  left: 60%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.55rem;
+}
+
+footer {
+  width: 100%;
+  height: 2rem;
+  margin-top: auto;
+}
+
+footer > p {
+  text-align: center;
+}

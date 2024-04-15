@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Color Picker</title>
+    {% block styles %}
+    {{ bootstrap.load_css() }}
+    {% endblock %}
+    <link  href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    {% from "bootstrap5/form.html" import render_form %}
+</head>
+<body>
+<main>
+    <div class="main_part">
+                <div class="light_box">
+                    <h1 class="title"><a href="{{url_for('home')}}">Color Picker</a></h1>
+            <div class="col-lg-8 col-md-10 mx-auto image_form">
+                {{ render_form(form, novalidate=True, button_map={"submit": "success"}) }}
+        </div>
+
+        <div class="image_show">
+            {% if filename %}
+                <img src="{{url_for('static', filename='images/' + filename)}}">
+            <div class="palette">
+                {% for color in palette %}
+                    <div class='color' style="background-color:rgb{{ color }}">
+                        <div class="overlay">
+                            <div class="rgb_code" onclick='copyText(this)'>
+                                rgb{{ color }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="copied_text" style="display: none;">Copied</div>
+            {% else %}
+                <h3>No image to show</h3>
+            {% endif %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+              <div class="alert alert-danger p-0 mb-0">
+
+                     {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">{{ message }}</div>
+                       {% endfor %}
+                </div>
+                  {% endif %}
+            {% endwith %}
+
+        </div>
+            </div>
+    </div>
+</main>
+<footer>
+    <p class="footer">Nadezhda Evdokimova © {{ now.year }}</p>
+</footer>
+<script>
+
+    function copyText(element) {
+        const textToCopy = element.innerText.trim();
+
+        const input = document.createElement('input');
+        input.setAttribute('value', textToCopy);
+        document.body.appendChild(input);
+
+        input.select();
+
+        document.execCommand('copy');
+
+        document.body.removeChild(input);
+        document.getElementById('copied_text').style.display = 'block';
+        setTimeout(function() {
+                    document.getElementById('copied_text').style.display = 'none';
+                }, 2000);
+
+    }
+
+</script>
+</body>
+</html>
