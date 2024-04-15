@@ -1,5 +1,6 @@
 from colorthief import ColorThief
 from PIL import Image
+from werkzeug.utils import secure_filename
 
 
 class ColorPicker(ColorThief):
