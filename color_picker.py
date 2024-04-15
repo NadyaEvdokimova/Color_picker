@@ -14,8 +14,10 @@ class ColorPicker(ColorThief):
 
     def resize_and_compress_image(self, file):
         img = Image.open(file)
+        print(file)
         resized_img = img.resize((800, 600))
-        resized_img_path = "./static/images/resized_" + secure_filename(file.filename)
-        resized_img.save(resized_img_path, quality=90) 
+        filename = secure_filename(file.filename)
+        resized_img_path = "./static/images/resized_" + filename
+        resized_img.save(resized_img_path, quality=90)
         img.close()
         return resized_img_path
