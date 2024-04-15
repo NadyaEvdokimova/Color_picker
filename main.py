@@ -62,8 +62,9 @@ def home():
         # Add file in folder and get colors from Class ColorPicker
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            img = ColorPicker("./static/images/" + filename)
+            resized_img_path = "./static/images/resized_" + secure_filename(file.filename)
+            file.save(resized_img_path)
+            img = ColorPicker(resized_img_path)
             rest_colors = img.palette
             for color in rest_colors:
                 palette.append(color)
