@@ -12,7 +12,7 @@ from wtforms.validators import DataRequired
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
-app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER')
+app.config['UPLOAD_FOLDER']="./static/images"
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 
